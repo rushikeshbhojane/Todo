@@ -1,0 +1,35 @@
+<div class="add-edit-card-container">
+    <div class="add-edit-card-background"></div>
+    <div class="add-edit-card-content font-family-regular">
+        <div class="title font-family-bold" >
+            {{listItem.title}}
+        </div>
+
+        <div class="action-buttons-container">
+            <button style="background: url('../../assets/images/check-circle.svg')" (click)="save($event)"></button>
+            <button style="background: url('../../assets/images/cross-circle.svg')" (click)="discard($event)"></button>
+        </div>
+        <div class="description-container">
+            <div class="description-label">
+                {{STRING_CONSTANTS.DESCRIPTION}}
+            </div>
+            <div
+                class="description-input" contenteditable="true" data-placeholder="Enter a description for this card..."
+                [textContent]="listItem.description" (input)="listItem.description = $event.target.textContent">
+            </div>
+        </div>
+
+        <div class="color-selection-container">
+            <div class="color-label">{{STRING_CONSTANTS.COLOR}}</div>
+
+            <div class="colors-list">
+                <div class="color" *ngFor="let color of colorsList"
+                    (click)="listItem.bgColor = color"
+                    [ngStyle]="{'background-color': color}"
+                    [ngClass]="{checked: listItem.bgColor == color}">
+
+                </div>
+            </div>
+        
+        </div>
+</div>

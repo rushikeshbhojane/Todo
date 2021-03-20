@@ -1,0 +1,25 @@
+<div class="header">
+    <h1 class="app-title font-family-bold">
+        {{STRING_CONSTANTS.APP_TITLE}}
+    </h1>
+    <div class="icons-container">
+        <!-- <div class="plus-circle icon"> -->
+            <img src="../assets/images/plus-circle-outline.svg" alt="" class="icon">
+        <!-- </div> -->
+        <!-- <div class="alert-circle icon"> -->
+            <img src="../assets/images/alert-circle-outline.svg" alt="" class="icon">
+        <!-- </div> -->
+        <!-- <div class="bell-icon icon"> -->
+            <img src="../assets/images/bell-outline.svg" alt=""  class="icon">
+        <!-- </div> -->
+    </div>
+    <!-- <div class="profie-picture"> -->
+        <img src="../assets/images/Oval.png" alt="" class="profile-picture">
+    <!-- </div> -->
+</div>
+<div class="body">
+    <div class="list-contianer"
+        *ngFor="let dataItem of dataList">
+            <app-section [sectionData]="dataItem" (changeEvent)="saveListToLocalStorage()"></app-section>
+        </div>
+</div>

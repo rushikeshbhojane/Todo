@@ -1,0 +1,110 @@
+.section-header {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+.item-list-container {
+    .item-list {
+        .item {
+            margin-bottom: 10px;
+        }
+        .item:last-child {
+            margin-bottom: 0px;
+        }
+        margin-bottom: 20px;
+    }
+}
+.add-new-card {
+    height: 160px;
+    border: 1px dashed #00000033;
+    .title-input {
+        border: 0;
+    }
+}
+.item, .add-new-card {
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 20px 42px 20px 20px;
+}
+.card-center {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 160px;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.title-input:empty:before {
+    content: attr(data-placeholder);
+    color: #00000080;
+}
+.title-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .title-input {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 10px;
+    }
+    .buttons-container {
+        display: flex;
+        gap: 20px;
+        button {
+            background:none;
+            border:none;
+            margin:0;
+            padding:0;
+            cursor: pointer;
+        }
+        .cancel-button {
+            color: #00000080;
+        }
+    }
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+  .item {
+      position: relative;
+    span {
+        cursor: auto;
+    }
+    .action-buttons-container {
+        display: flex;
+        gap: 15px;
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        button {
+            width: 13px;
+            height: 16px;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+            border:none;
+            margin:0;
+            padding:0;
+            cursor: pointer;
+        }
+    }
+  }
+
+  .draggable {
+    cursor: move;
+}

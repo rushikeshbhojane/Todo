@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/css/reset.css";
+@font-face {
+    font-family: font-regular;
+    src: url(assets/font/Poppins-Regular.ttf) format("truetype");
+  }
+
+  @font-face {
+    font-family: font-bold;
+    src: url(assets/font/Poppins-Bold.ttf) format("truetype");
+  }
+
+.font-family-regular {
+  font-family: font-regular;
+}
+
+.font-family-bold {
+  font-family: font-bold;
+}
