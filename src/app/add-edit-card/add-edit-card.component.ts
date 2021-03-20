@@ -18,7 +18,9 @@ export class AddEditCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.listItem.bgColor = this.colorsList[0];
+    if (!this.listItem.bgColor) {
+      this.listItem.bgColor = this.colorsList[0];
+    }
   }
 
   public save(event: MouseEvent): void {
