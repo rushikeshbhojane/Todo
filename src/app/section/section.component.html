@@ -2,44 +2,59 @@
     {{sectionData.title}}
 </div>
 
-<div class="item-list-container">
-    <div class="item-list">
-        <div class="item font-family-regular draggable"
-            *ngFor="let item of sectionData.items"
-            [ngStyle]="{'background-color': item.bgColor}"
-            draggable="true">
-            <span
-                contenteditable="true"
-                [textContent]="item.title" (input)="item.title=$event.target.textContent;changeEvent.emit()">
-            </span>
-            <div class="action-buttons-container">
-                <button style="background: url('../../assets/images/Delete.svg')" (click)="onDeleteClick(item)"></button>
+<div class="drop-zone">
+    <div class="item-list-container fade-in">
+        <div class="item-list" cdkDropList  (cdkDropListDropped)="dropped($event)">
+            <div class="item font-family-regular draggable"
+                *ngFor="let item of sectionData.items"
+                [ngStyle]="{'background-color': item.bgColor}"
+                cdkDrag
+                data-id="{{item.id.value}}">
+                
+                <!-- drag-handle -->
+
+                <div class="drag-handle" cdkDragHandle>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-grip-vertical" viewBox="0 0 16 16">
+                        <path d="M7 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-3 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-3 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
+                </div>
+
+                <span
+                    contenteditable="true"
+                    [textContent]="item.title" (input)="item.title=$event.target.textContent;changeEvent.emit()">
+                </span>
+                <div class="action-buttons-container">
+                    <button style="background: url('../../assets/images/edit.svg')" (click)="onEditClick(item)" class="zoom"></button>
+                    <button style="background: url('../../assets/images/Delete.svg')" (click)="onDeleteClick(item)" class="zoom"></button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="add-new-card font-family-regular card-center cursor-pointer add-card-panel"
-    *ngIf="showAddCardPanel; else showTitlePanel"
-    (click)="onAddNewCard($event)">
-    {{STRING_CONSTANTS.ADD_NEW_CARD}}
-</div>
-
-<ng-template #showTitlePanel> 
-    <div class="add-new-card font-family-regular title-panel">
-        <div
-            class="title-input" contenteditable="true" data-placeholder="Enter a title for this card…"
-            [textContent]="newCardTitle" (input)="newCardTitle=$event.target.textContent"></div>
-        <div class="buttons-container">
-            <button class="add-card-button" (click)="OnAddCardButtonClick($event)">{{STRING_CONSTANTS.ADD_CARD}}</button>
-            <button class="cancel-button" (click)="OnCancelButtonClick">{{STRING_CONSTANTS.CANCEL}}</button>
-        </div>
+    <div class="add-new-card font-family-regular card-center cursor-pointer add-card-panel"
+        *ngIf="showAddCardPanel; else showTitlePanel"
+        (click)="onAddNewCard($event)">
+        <span class="zoom">
+            {{STRING_CONSTANTS.ADD_NEW_CARD}}
+        </span>
     </div>
-</ng-template> 
 
-<app-add-edit-card
-    *ngIf="showAddEditCard && item"
-    (saveEvent)="onSave()"
-    (discardEvent)="onDiscard()"
-    [listItem]="item">
-</app-add-edit-card>
+    <ng-template #showTitlePanel> 
+        <div class="add-new-card font-family-regular title-panel">
+            <div
+                class="title-input" contenteditable="true" data-placeholder="Enter a title for this card…"
+                [textContent]="newCardTitle" (input)="newCardTitle=$event.target.textContent"></div>
+            <div class="buttons-container">
+                <button class="add-card-button" (click)="OnAddCardButtonClick($event)">{{STRING_CONSTANTS.ADD_CARD}}</button>
+                <button class="cancel-button" (click)="OnCancelButtonClick($event)">{{STRING_CONSTANTS.CANCEL}}</button>
+            </div>
+        </div>
+    </ng-template> 
+
+    <app-add-edit-card
+        *ngIf="showAddEditCard && item"
+        (saveEvent)="onSave()"
+        (discardEvent)="onDiscard()"
+        [listItem]="item">
+    </app-add-edit-card>
+</div>

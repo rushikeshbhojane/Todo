@@ -11,7 +11,6 @@ export class AppComponent implements OnInit {
   title = 'todolist';
   public STRING_CONSTANTS : any = STRING_CONSTANTS;
   public dataList : SectionData[] = [];
-
   public ngOnInit() {
     this.dataList = JSON.parse(JSON.stringify(this.SectionDataList));
   }

@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ListItem, SectionData } from '../Common/common-models';
 import { STRING_CONSTANTS } from '../Common/Constants';
@@ -31,6 +32,15 @@ export class SectionComponent implements OnInit {
     }
   }
 
+  public onEditClick(item : ListItem) {
+    this.item = item;
+    this.showAddEditCard = true;
+  }
+
+  public OnCancelButtonClick(event: MouseEvent) {
+    this.resetLocal();
+  }
+
   public onSave() {
     if (!this.sectionData.items.some((item : ListItem) => {
         return item.id === this.item.id
@@ -59,5 +69,14 @@ export class SectionComponent implements OnInit {
       }
     );
     this.changeEvent.emit();  
+  }
+
+  dropped(event: CdkDragDrop<string[]>) {
+    moveItemInArray(
+       this.sectionData.items, 
+       event.previousIndex, 
+       event.currentIndex
+      );
+    this.changeEvent.emit();
   }
 }

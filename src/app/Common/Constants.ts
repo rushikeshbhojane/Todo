@@ -12,5 +12,6 @@ let STRING_CONSTANTS : any = {
     CARD_DESCRIPTION_PLACEHOLDER : "Enter a description for this card...",
     CARD_TITLE_PACEHOLDER: "Enter a title for this card…",
     DESCRIPTION: "Description",
-    COLOR: "Color"
+    COLOR: "Color",
+    DATA_TRANSFER_ITEM: "data-transfer-item"
 };
